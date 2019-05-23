@@ -18,6 +18,13 @@ theta1 = 0.0
 l_rate = 0.01
 train_size = 0
 
+def normalize_f(data_):
+	# Using zi = (xi-min(x))/(max(x)-min(x))
+	normalized_data = []
+	min_data = min(data_)
+	max_data = max(data_)
+	normalized_data = [round(((data_[i]-min_data)/(max_data-min_data)),1) for i in range(len(data_))]
+	return normalized_data
 
 def predict_f(theta0,theta1):
 	# Predict on existing data set(internal evailuation)
@@ -39,11 +46,11 @@ def generate_f():
 	global train_x,train_y
 	train_x1 = [float(i) for i in range(10)]
 	train_y1 = [float(i+1) for i in range(10)]
-	print train_x1
-	print train_y1
+	# print train_x1
+	# print train_y1
 	# Normalize the data to avoid exploding cost value
-	train_x = [i/max(train_y1) for i in train_x1]
-	train_y = [i/max(train_y1) for i in train_y1]
+	train_x = normalize_f(train_x1)
+	train_y = normalize_f(train_y1)
 	
 
 def hypothesis_f(i,theta0,theta1):
