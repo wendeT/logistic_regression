@@ -8,7 +8,7 @@
 train_x = []
 train_y = []
 pred_p = []
-iter_ = 10000
+iter_ = 100000
 theta0 = 0.0
 theta1 = 0.0
 l_rate = 0.01
@@ -16,7 +16,6 @@ train_size = 0
 
 def normalize_f(data_):
 	# Using zi = (xi-min(x))/(max(x)-min(x))
-	normalized_data = []
 	min_data = min(data_)
 	max_data = max(data_)
 	normalized_data = [round(((data_[i]-min_data)/(max_data-min_data)),1) for i in range(len(data_))]
@@ -31,7 +30,6 @@ def predict_f(theta0,theta1):
 
 def evaluate_f(predicted_,train_y):
 	# Compute the prediction based on the parameter value
-	correct = []
 	correct = [1 for i in range(train_size) if train_y[i] == predicted_[i]]
 	accuracy_ = (correct.count(1)/train_size)
 	return accuracy_
@@ -40,8 +38,8 @@ def evaluate_f(predicted_,train_y):
 def generate_f():
 	# Generater function - Y = X+1
 	global train_x,train_y
-	train_x1 = [float(i) for i in range(10)]
-	train_y1 = [float(i+1) for i in range(10)]
+	train_x1 = [float(i) for i in range(50)]
+	train_y1 = [float(i+1) for i in range(50)]
 	# print train_x1
 	# print train_y1
 	# Normalize the data to avoid exploding cost value
@@ -54,19 +52,13 @@ def hypothesis_f(i,theta0,theta1):
 	return val
 
 def sum_f0(theta0,theta1):
-	sum_ = 0.0
-	# Go through all training data to compute the thetha
-	for i in range(train_size):
-		error_i = (theta0 + theta1*train_x[i]) - train_y[i]
-		sum_ += error_i
+	error_i = [((theta0 + theta1*train_x[i]) - train_y[i]) for i in range(train_size)]
+	sum_ = sum(error_i)
 	return sum_
 
 def sum_f1(theta0,theta1):
-	sum_ = 0.0
-	# Go through all training data to compute the thetha
-	for i in range(train_size):
-		error_i = (theta0 + theta1*train_x[i] - train_y[i])*train_x[i]
-		sum_ += error_i
+	error_i = [((theta0 + theta1*train_x[i] - train_y[i])*train_x[i]) for i in range(train_size)]
+	sum_ = sum(error_i)
 	return sum_
 
 def gsd_f():
