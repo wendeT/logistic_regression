@@ -18,6 +18,7 @@ theta1 = 0.0
 l_rate = 0.01
 train_size = 0
 
+
 def predict_f(theta0,theta1):
 	# Predict on existing data set(internal evailuation)
 	global pred_p
@@ -34,6 +35,7 @@ def evaluate_f(predicted_,train_y):
 
 
 def generate_f():
+	# Generater function - Y = X+1
 	global train_x,train_y
 	train_x1 = [float(i) for i in range(10)]
 	train_y1 = [float(i+1) for i in range(10)]
