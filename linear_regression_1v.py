@@ -5,10 +5,6 @@
 # Data - artificially generated 
 # Wendet - 2018 
 
-import codecs
-import random
-
-
 train_x = []
 train_y = []
 pred_p = []
