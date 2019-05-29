@@ -1,5 +1,5 @@
-# Pythonic implementation of logistic_regression with one variable
-Pythonic implementation of linear regresstion with single variables
+# Pythonic implementation of linear and logistic  regresstion with one and multiple variables
+Pythonic implementation of linear and logistic  regresstion with one and multiple variables.
 #Parameters thetha0 and theath1
 Termination condition - number of iteration
 Initialization - zero
